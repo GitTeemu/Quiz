@@ -17,6 +17,15 @@ class Player:
     def __init__(self, userName, password):
         self.userName = userName
         self.password = password
+        self.totalQuestions = 0
+        self.totalRightanswers = 0
+        
+        
+class Question:
+    def __init__(self, questionType, questionText, questionAnswer):
+        self.questionType = questionType
+        self.questionText = questionText
+        self.questionAnswer = questionAnswer
         
 
 def login():
@@ -43,11 +52,57 @@ def login():
 player = login()
 print(player)
 
+"""Luo funktio createQuestions(), joka palauttaa listarakenteessa kymmenen
+väittämää vastauksineen. Tee lista Class Question -objektin avulla. Generoinnin
+jälkeen luo looppi, joka printtaa kaikki kysymykset.
+"""
+questions = []
+def createQuestions():
+    for i in range(1):
+        questionType = input('Anna kysymyksen tyyppi: ')
+        questionText = input('Anna kysymys: ')
+        questionAnswer = input('Anna vastaus: ')
+        questions.append(Question(questionType, questionText, questionAnswer))
+          
+createQuestions()
+
+def newQuiz():
+    print('Peli Alkaa!')
+    answerCount = 0
+    rightAnswerCount = 0
+    for question in questions:
+        player.totalQuestions += 1
+        answer = input('Anna vastaus: ')
+        if answer == question.questionAnswer:
+            print('Oikein!')
+            player.totalRightanswers += 1
+        else:
+            print('Väärin!')
         
-"""
-Jos loginSucceeded = True, niin silloin luodaan player-objekti
-pelaajasta ja palautetaan returnilla luotu player-objekti.
-"""
+
+newQuiz()
+print(player.userName + ': Total questions: ' + str(player.totalQuestions))
+
+'''Seuraavaksi kysy kolme kysymystä True/False -menetelmällä (t/f). Hyväksyttäviä arvoja
+ovat vain pieni t ja f. Samaa logiikkaa vaaditaan vastatessa kysymyksiin. Tämä tarkoittaa
+että tarkistaminen tehdään funktiolla, jota eri paikoista. Lisäksi, pelin loputtua kerro yksittäisen 
+pelin kysymysten lukumäärä sekä oikeiden vastausten määrä. Pelaaja voi vastata myös ison T:n ja ison F:n
+ja ne on hyväksyttävä
+'''
 
         
+
+    
+
+
+
+
+
+
+
+
+
+
+
+     
         
